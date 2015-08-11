@@ -1,0 +1,24 @@
+<resources>
+
+    <style name="Base.Theme.ToDoAPP" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
+        <item name="colorAccent">@color/color_accent</item>
+
+    </style>
+    <style name="AppBaseTheme" parent="Base.Theme.ToDoAPP">
+    </style>
+
+    <style name="AppTheme" parent="AppBaseTheme">
+    </style>
+
+
+    <style name="TextAppearence.App.TextInputLayout" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/color_primary</item>
+    </style>
+
+    <style name="ColorSwitchStyle">
+        <item name="colorControlActivated">@color/color_primary</item>
+    </style>
+</resources>

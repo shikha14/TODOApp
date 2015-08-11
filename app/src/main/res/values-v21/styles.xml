@@ -1,0 +1,10 @@
+<resources>
+
+
+
+    <style name="AppBaseTheme" parent="Base.Theme.ToDoAPP">
+
+    </style>
+
+
+</resources>
