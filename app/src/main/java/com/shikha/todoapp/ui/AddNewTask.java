@@ -228,13 +228,24 @@ public class AddNewTask extends AppCompatActivity implements View.OnClickListene
     }
 
 
-    private void setAlarm(Task task) {
-        Intent myIntent = new Intent(AddNewTask.this, AlarmReceiver.class);
-        myIntent.putExtra(AppUtils.SEND_TASK_TITLE, task.getTaskTitle());
-        myIntent.putExtra(AppUtils.SEND_TASK_CONTENT, task.getTaskContent());
-        pendingIntent = PendingIntent.getBroadcast(AddNewTask.this, 0, myIntent, 0);
-        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+//    private void setAlarm(Task task) {
+//        Intent myIntent = new Intent(AddNewTask.this, AlarmReceiver.class);
+//        myIntent.putExtra(AppUtils.SEND_TASK_TITLE, task.getTaskTitle());
+//        myIntent.putExtra(AppUtils.SEND_TASK_CONTENT, task.getTaskContent());
+//        pendingIntent = PendingIntent.getBroadcast(AddNewTask.this, 0, myIntent, 0);
+//        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+//        alarmManager.set(AlarmManager.RTC, dueDate, pendingIntent);
+//    }
+
+    private void setAlarm(Task task){
+
+        Intent intent = new Intent(getBaseContext(), AlarmReceiver.class);
+        intent.putExtra(AppUtils.SEND_TASK_TITLE, task.getTaskTitle());
+        intent.putExtra(AppUtils.SEND_TASK_CONTENT, task.getTaskContent());
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getBaseContext(),task.getTaskId(), intent, 0);
+        AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC, dueDate, pendingIntent);
+
     }
 
     private int saveNewCategory() {

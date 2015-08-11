@@ -25,7 +25,7 @@ public class AppUtils {
     public static final int DATE_PICKER_ID = 999;
     //Variable to hold time picker id
     public static final int TIME_DIALOG_ID = 9999;
-
+    public static final int ALARM_REQUEST_ID = 99;
 
 
     public static final String  SEND_TASK_TITLE="task_title";
@@ -211,4 +211,7 @@ public class AppUtils {
         notification.setLatestEventInfo(context, "ToDoApp", msg, pendingNotificationIntent);
         mManager.notify(0, notification);
     }
+
+
+
 }

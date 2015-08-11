@@ -1,5 +1,7 @@
 package com.shikha.todoapp.ui;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
@@ -24,6 +26,7 @@ import com.shikha.todoapp.R;
 import com.shikha.todoapp.framework.object.Category;
 import com.shikha.todoapp.framework.object.Task;
 import com.shikha.todoapp.ui.objects.TaskViewHolder;
+import com.shikha.todoapp.ui.receiver.AlarmReceiver;
 import com.shikha.todoapp.utils.AppUtils;
 
 import java.sql.Timestamp;
@@ -210,6 +213,7 @@ public class ViewTask extends AppCompatActivity implements View.OnClickListener 
     private void performDelete(Task item) {
         item.setStatus(1);
         item.save();
+        cancelAlarm(item.getTaskId());
         notifyAdapter();
     }
 
@@ -225,6 +229,17 @@ public class ViewTask extends AppCompatActivity implements View.OnClickListener 
             taskList.addAll(tempList);
             mAdapter.notifyDataSetChanged();
         }
+
+    }
+
+
+
+
+    private void cancelAlarm(int taskId){
+        Intent intent = new Intent(getBaseContext(), AlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getBaseContext(),taskId, intent, 0);
+        AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        alarmManager.cancel(pendingIntent);
 
     }
 }

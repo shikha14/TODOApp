@@ -25,7 +25,10 @@
 
         <activity
             android:name=".ui.ViewTask"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,7 +37,9 @@
         </activity>
         <activity
             android:name=".ui.AddNewTask"
-            android:label="@string/title_activity_add_new_task" >
+            android:label="@string/title_activity_add_new_task"
+            android:screenOrientation="portrait"
+            >
 
         </activity>
 
